@@ -21,7 +21,7 @@ export default function Home() {
 				headers: {
 					"content-type": "application/json",
 				},
-				body: JSON.stringify({ animal: value }),
+				body: JSON.stringify({ animal: animalInput }),
 			})
 			const data = await response.json()
 			if (response.status !== 200) {
@@ -30,7 +30,7 @@ export default function Home() {
 					new Error(`Request failed with status ${response.status}`)
 				)
 			}
-
+			setResult(data.result)
 			setCount(count + 1)
 			setAnimalInput("")
 		} catch (error) {
